@@ -1,7 +1,6 @@
 ---
 lab:
   title: 'Lab: Implementing and configuring network infrastructure services in Windows Server'
-  type: Answer Key
   module: 'Module 7: Network Infrastructure services in Windows Server'
   description: 'In this lab, you deploy and configure DHCP scopes and failover for high availability in a branch scenario. You also implement and validate DNS configuration to support core network infrastructure services.'
   duration: 60 minutes
