@@ -1,7 +1,6 @@
 ---
 lab:
   title: 'Lab: Implementing identity services and Group Policy'
-  type: Answer Key
   module: 'Module 1: Identity services in Windows Server'
   description: 'In this lab, you deploy an additional domain controller on a Windows Server Core computer by using remote management and PowerShell. You then create and manage Active Directory objects and configure Group Policy settings to apply centralized configuration.'
   duration: 45 minutes

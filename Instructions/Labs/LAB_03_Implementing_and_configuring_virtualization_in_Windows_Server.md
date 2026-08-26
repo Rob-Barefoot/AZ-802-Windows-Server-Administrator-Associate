@@ -1,7 +1,6 @@
 ---
 lab:
   title: 'Lab: Implementing and configuring virtualization in Windows Server'
-  type: Answer Key
   module: 'Module 5: Hyper-V virtualization in Windows Server'
   description: 'In this lab, you create and configure Hyper-V virtual machines, including virtual switches and virtual hard disks. You also deploy and manage Windows containers to practice host virtualization and container-based workloads.'
   duration: 60 minutes
