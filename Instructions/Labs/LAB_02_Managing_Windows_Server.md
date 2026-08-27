@@ -1,7 +1,6 @@
 ---
 lab:
   title: 'Lab: Managing Windows Server'
-  module: 'Module 3: Windows Server administration'
   description: 'In this lab, you install and configure Windows Admin Center for remote server administration. You connect to lab servers and perform common management tasks by using graphical tools and PowerShell remoting.'
   duration: 45 minutes
   level: 200
@@ -15,7 +14,7 @@ lab:
     - Remote Management
 ---
 
-# Lab answer key: Managing Windows Server
+# Lab: Managing Windows Server
 
 This lab should take approximately **45** minutes to complete.
 
