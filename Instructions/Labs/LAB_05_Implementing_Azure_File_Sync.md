@@ -1,7 +1,6 @@
 ---
 lab:
   title: 'Lab: Implementing Azure File Sync'
-  module: 'Module 10: Implementing a hybrid file server infrastructure'
   description: 'In this lab, you implement DFS Replication in an on-premises environment and create an Azure File Sync sync group. You migrate replication workflows to Azure File Sync, verify synchronization and cloud tiering, and troubleshoot conflict scenarios.'
   duration: 60 minutes
   level: 400
@@ -15,7 +14,7 @@ lab:
     - Azure
 ---
 
-# Lab answer key: Implementing Azure File Sync
+# Lab: Implementing Azure File Sync
 
 This lab should take approximately **60** minutes to complete.
 
