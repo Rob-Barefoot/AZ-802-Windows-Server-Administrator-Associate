@@ -5,7 +5,7 @@ lab:
   duration: 60 minutes
   level: 400
   islab: true
-  status: 'in-development'
+   status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - Azure File Sync
@@ -30,10 +30,10 @@ This lab should take approximately **60** minutes to complete.
    Install-WindowsFeature -Name RSAT-DFS-Mgmt-Con -IncludeManagementTools
    ```
 1. On the taskbar, select **File Explorer**.
-1. In File Explorer, browse to the **C:\\Labfiles\\Lab10** folder.
-1. In File Explorer, in the details pane, select the file **L10-DeployDFS.ps1**, display its context-sensitive menu, and then, in the menu, select **Edit**.
+1. In File Explorer, browse to the **C:\\Labfiles\\Lab05** folder.
+1. In File Explorer, in the details pane, select the file **DeployDFS.ps1**, display its context-sensitive menu, and then, in the menu, select **Edit**.
 
-   >**Note:** This will automatically open the file **L10-DeployDFS.ps1** in the script pane of Windows PowerShell ISE.
+   >**Note:** This will automatically open the file **DeployDFS.ps1** in the script pane of Windows PowerShell ISE.
 
 1. In the **Windows PowerShell ISE** script pane, review the script, and then execute it by selecting the **Run Script** icon in the toolbar or by pressing F5. 
 
@@ -66,7 +66,7 @@ This lab should take approximately **60** minutes to complete.
 1. On the **Storage accounts** page, select **+ Create**.
 1. On the **Basics** tab of the **Create a storage account** page, specify the following settings:
 
-   - Resource group: Select **Create new**, enter **AZ802-L0601-RG** as resource group name, and then select **OK**.
+   - Resource group: Select **Create new**, enter **AZ802-L0501-RG** as resource group name, and then select **OK**.
    - Storage account name: Type a string of characters starting with a lower case letter followed by any combination of lower case letters and digits, with the total length between 3 and 24 characters. 
 
    >**Note:** Choose the name which is likely to be globally unique. For example, you can specify the storage account name in the following format: \<*yourlowercaseinitials*>*DDMMYY*; for example, if your name is Devon Torres and you're creating a storage account on January 30, 2022, the storage account name will be **dt013022**. If that name is already taken, add another character to the name until the name is available. 
@@ -86,7 +86,7 @@ This lab should take approximately **60** minutes to complete.
 
 1. On **SEA-ADM1**, in the Azure portal, in the details pane, select **share1**.
 1. In the details pane, select **Upload**.
-1. On the **Upload files** tab, browse to **C:\\Labfiles\\Lab10\\File1.txt**, select **Upload**, and when the upload is complete, close the **Upload files** tab.
+1. On the **Upload files** tab, browse to **C:\\Labfiles\\Lab05\\File1.txt**, select **Upload**, and when the upload is complete, close the **Upload files** tab.
 1. Browse back to the **File shares** menu, select the elipsis of **share1** and then, on the list displayed, select **View snapshots**.
 1. On the **File share snapshots** page, select **Add snapshot** and click **Ok**.
 1. Browse back to the **File shares** menu, select the box representing **share1** and select **Connect**, select **Show Script**, use the **Copy to clipboard** button to copy the script, and then close the **Connect** tab.
@@ -107,7 +107,7 @@ This lab should take approximately **60** minutes to complete.
 ### Task 3: Deploy Storage Sync Service and a File Sync group
 
 1. On **SEA-ADM1**, in the Azure portal, in the **Search resources, services, and docs** text box in the toolbar, search for and select **Azure File Sync**.
-1. On the **Basics** tab of the **Deploy File Sync** page, in the **Resource Group** drop-down list, select **AZ802-L0601-RG**. 
+1. On the **Basics** tab of the **Deploy File Sync** page, in the **Resource Group** drop-down list, select **AZ802-L0501-RG**.
 1. In the **Storage Sync Service name** text box, enter **FileSync1**. 
 1. In the **Region** drop-down list, select the same region in which you created the storage account. 
 1. On the **Basics** tab of the **Deploy File Sync** page, select **Review + Create** and **Create**.
@@ -127,8 +127,8 @@ This lab should take approximately **60** minutes to complete.
 
 1. On **SEA-ADM1**, in the Azure portal, on the **FileSync1 \| Registered servers** page, select the **Azure File Sync agent** link to go to the **Azure File Sync Agent** Microsoft Downloads page.  
 1. On the **Azure File Sync Agent** Microsoft Downloads page, select **Download**, select the checkbox next to the entry for File Sync agent for Windows Server 2022 (**StorageSyncAgent_WS2022.msi**), and select **Next** to start the download. After the download is complete, close the Microsoft Edge tab that opened for the download.
-1. Use File Explorer to copy the downloaded file to the **C:\\Labfiles\\Lab10** folder.
-1. In File Explorer displaying the content of the **C:\\Labfiles\\Lab10** folder, in the details pane, select the file **Install-FileSyncServerCore.ps1**, display its context-sensitive menu, and then, in the menu, select **Edit**.
+1. Use File Explorer to copy the downloaded file to the **C:\\Labfiles\\Lab05** folder.
+1. In File Explorer displaying the content of the **C:\\Labfiles\\Lab05** folder, in the details pane, select the file **Install-FileSyncServerCore.ps1**, display its context-sensitive menu, and then, in the menu, select **Edit**.
 
    >**Note:** This will automatically open the file **Install-FileSyncServerCore.ps1** in the script pane of Windows PowerShell ISE.
 
@@ -258,7 +258,7 @@ This lab should take approximately **60** minutes to complete.
 1. In the details pane, select **FileSync1** and the Azure storage account that you created in this lab.
 1. In the Delete Resources pane, select **Delete**, enter **yes** in a text box, and then select **Delete**.
 1. In the navigation pane, select **Resource groups**.
-1. In the details pane, select **AZ802-L0601-RG**, select **Delete resource group**, enter **AZ802-L0601-RG**, and then select **Delete**.
+1. In the details pane, select **AZ802-L0501-RG**, select **Delete resource group**, enter **AZ802-L0501-RG**, and then select **Delete**.
 
 
 

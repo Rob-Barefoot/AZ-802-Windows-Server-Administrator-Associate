@@ -5,7 +5,7 @@ lab:
   duration: 60 minutes
   level: 300
   islab: true
-  status: 'in-development'
+   status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - DHCP
@@ -25,7 +25,7 @@ This lab should take approximately **60** minutes to complete.
 1. Connect to **SEA-ADM1**, and then, if needed, sign in with the credentials provided by the instructor.
 1. On **SEA-ADM1**, select **Start**, and then select **Windows PowerShell (Admin)**.
 
-   >**Note**: Perform the next two steps in case you have not already installed Windows Admin Center on **SEA-ADM1**.
+   >**Note**: Perform the next two steps to install Windows Admin Center on **SEA-ADM1**.
 
 1. In the **Windows PowerShell** console, enter the following command, and then press Enter to download the latest version of Windows Admin Center:
 	
@@ -46,7 +46,7 @@ This lab should take approximately **60** minutes to complete.
 
 1. On **SEA-ADM1**, start Microsoft Edge, and then browse to `https://SEA-ADM1.contoso.com`.
  
-   >**Note**: If the link does not work, on **SEA-ADM1**, open File Explorer, select Downloads folder, in the Downloads folder select **WindowsAdminCenter.msi** file and install manually. After the install completes, refresh Microsoft Edge.
+   >**Note**: If the link does not work, on **SEA-ADM1**, run **WindowsAdminCenter.exe** again. After the installation completes, refresh Microsoft Edge.
 
    >**Note**: If you get **NET::ERR_CERT_DATE_INVALID** error, select **Advanced** on the Edge browser page, at the bottom of page select **Continue to sea-adm1-contoso.com (unsafe)**.
 
@@ -289,7 +289,7 @@ This lab should take approximately **60** minutes to complete.
 1. On **SEA-ADM1**, switch back to the **Ethernet Status** window.
 1. In the **Ethernet Status** window, select **Properties**.
 1. In the **Ethernet Properties** dialog box, select **Internet Protocol Version 4 (TCP/IPv4)**, and then select **Properties**.
-1. In the **Internet Protocol Version 4 (TCP/IPv4) Properties** dialog box, change the currently assigned IP address (**172.16.10.11**) to an IP address **172.16.11.11** that is not within the IP address range of the **HeadOfficeSubnet**, use a subnet mask of **255.255.0.0** and a DNS server IP of **172.60.10.12** and then select **OK**.
+1. In the **Internet Protocol Version 4 (TCP/IPv4) Properties** dialog box, change the currently assigned IP address (**172.16.10.11**) to an IP address **172.16.11.11** that is not within the IP address range of the **HeadOfficeSubnet**, use a subnet mask of **255.255.0.0** and a DNS server IP of **172.16.10.12** and then select **OK**.
 1. On **SEA-ADM1**, switch to the **Windows PowerShell** console.
 1. In the **Windows PowerShell** console, enter the following command, and then press Enter to test the resolution of the `testapp.treyresearch.net` DNS record:
 
