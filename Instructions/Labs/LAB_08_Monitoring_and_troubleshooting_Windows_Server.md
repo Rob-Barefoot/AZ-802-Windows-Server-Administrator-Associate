@@ -5,7 +5,7 @@ lab:
   duration: 40 minutes
   level: 300
   islab: true
-  status: 'in-development'
+   status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - Windows Server
@@ -16,7 +16,7 @@ lab:
 
 # Lab: Monitoring and troubleshooting Windows Server
 
-This exercise should take approximately **40** minutes to complete. <!-- update with estimated duration -->
+This lab should take approximately **40** minutes to complete.
 
 ### Exercise 1: Establishing a performance baseline
 
@@ -150,7 +150,7 @@ This exercise should take approximately **40** minutes to complete. <!-- update 
 1. To allow WinRM connectivity in case of Kerberos authentication issues, enter the following command and press Enter:
 
    ```powershell
-   Set-Item WSMan:localhost\client\trustedhosts -Value *.contoso.com -Force
+   Set-Item WSMan:\localhost\client\trustedhosts -Value *.contoso.com -Force
    ```
 
 1. To establish a PowerShell Remoting session to **SEA-DC1**, enter the following command and press Enter:

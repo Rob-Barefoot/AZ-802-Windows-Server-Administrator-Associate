@@ -5,7 +5,7 @@ lab:
   duration: 40 minutes
   level: 300
   islab: true
-  status: 'in-development'
+   status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - Windows Server
@@ -17,7 +17,7 @@ lab:
 
 # Lab: Configuring security in Windows Server
 
-This exercise should take approximately **40** minutes to complete. <!-- update with estimated duration -->
+This lab should take approximately **40** minutes to complete.
 
 ## Exercise 1: Configuring Windows Defender Credential Guard
 
@@ -46,7 +46,7 @@ This exercise should take approximately **40** minutes to complete. <!-- update 
 1. To run the HVCI and Windows Defender Credential Guard hardware readiness tool, at the Windows PowerShell command prompt, enter the following commands, select **[R] Run once** at the first prompt, and then press Enter for the rest of the prompts:
 
    ```powershell
-   Set-Location -Path C:\Labfiles\Lab01\
+   Set-Location -Path C:\Labfiles\Lab07\
    .\DG_Readiness_Tool.ps1 -Enable -AutoReboot
    ```
 
@@ -103,13 +103,13 @@ This exercise should take approximately **40** minutes to complete. <!-- update 
 
    ```powershell
    New-ADOrganizationalUnit -Name "Seattle_Servers"
-   Get-ADComputer SEA-SVR1 | Move-ADObject –TargetPath "OU=Seattle_Servers,DC=Contoso,DC=com"
+   Get-ADComputer SEA-SVR1 | Move-ADObject -TargetPath "OU=Seattle_Servers,DC=Contoso,DC=com"
    ```
 
 1. To install LAPS, at the Windows PowerShell command prompt, enter the following command and press Enter:
 
    ```powershell
-   Msiexec /i C:\Labfiles\Lab01\LAPS.x64.msi
+   Msiexec /i C:\Labfiles\Lab07\LAPS.x64.msi
    ```
 
 1. On the **Welcome to the Local Administrator Password Solution Setup Wizard** page of the **Local Administrator Password Solution Setup** wizard, select **Next**.
@@ -119,7 +119,7 @@ This exercise should take approximately **40** minutes to complete. <!-- update 
 1. Once the installation completes, on the final page of the **Local Administrator Password Solution Setup** wizard, select **Finish**.
 1. To enable the Windows Defender Firewall with Advanced Security rule that allows incoming Server Message Block (SMB) connections from other domain-joined servers, at the Windows PowerShell command prompt, enter the following commands and, after each, press Enter:
 
-   ```
+   ```powershell
    $rule = Get-NetFirewallRule | Where-Object DisplayName -eq 'File and Printer Sharing (SMB-In)' 
    $rule | Set-NetFirewallRule -Profile Domain
    $rule | Enable-NetFirewallRule
@@ -163,7 +163,7 @@ This exercise should take approximately **40** minutes to complete. <!-- update 
 1. To install LAPS silently with the default settings, at the Windows PowerShell command prompt, enter the following command and press Enter:
 
    ```powershell
-   Start-Process msiexec.exe -Wait -ArgumentList '/i \\SEA-SVR2.contoso.com\c$\Labfiles\Lab01\LAPS.x64.msi /quiet'
+   Start-Process msiexec.exe -Wait -ArgumentList '/i \\SEA-SVR2.contoso.com\c$\Labfiles\Lab07\LAPS.x64.msi /quiet'
    ```
 
 1. To trigger the processing of Group Policy that will apply **LAPS** settings locally, at the Windows PowerShell command prompt, enter the following command and press Enter:

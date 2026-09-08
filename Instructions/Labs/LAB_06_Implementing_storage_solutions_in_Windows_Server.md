@@ -5,7 +5,7 @@ lab:
   duration: 90 minutes
   level: 400
   islab: true
-  status: 'in-development'
+   status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - Storage Spaces Direct
@@ -19,7 +19,7 @@ lab:
 
 This lab should take approximately **90** minutes to complete.
 
-> **Note**: Be sure to revert the virtual machines (VMs) between each exercise. Due to most of the VMs being Windows Server 2019 Server Core, the time it takes to revert and restart is faster than attempting to undo changes made to the storage environment in the exercises.
+> **Note**: Be sure to revert the virtual machines (VMs) between each exercise. Because most of the VMs use Windows Server 2022 Server Core, reverting and restarting them is faster than attempting to undo changes made to the storage environment.
 
 ## Exercise 1: Implementing Data Deduplication
 
@@ -54,9 +54,9 @@ This lab should take approximately **90** minutes to complete.
 1. At the **Windows PowerShell** prompt, enter the following commands, and press Enter after each to copy from **SEA-ADM1** a script that creates sample files to be deduplicated, execute it, and identify the outcome:
 
    ```powershell
-   New-PSDrive –Name 'X' –PSProvider FileSystem –Root '\\SEA-ADM1\Labfiles'
+   New-PSDrive -Name 'X' -PSProvider FileSystem -Root '\\SEA-ADM1\Labfiles'
    New-Item -Type Directory -Path 'M:\Data' -Force
-   Copy-Item -Path X:\Lab09\CreateLabFiles.cmd -Destination M:\Data\ -PassThru
+   Copy-Item -Path X:\Lab06\CreateLabFiles.cmd -Destination M:\Data\ -PassThru
    Start-Process -FilePath M:\Data\CreateLabFiles.cmd -PassThru
    Set-Location -Path M:\Data
    Get-ChildItem -Path .
@@ -81,7 +81,7 @@ This lab should take approximately **90** minutes to complete.
 
 1. On **SEA-ADM1**, select **Start**, and then select **Windows PowerShell (Admin)**.
 
-   >**Note**: Perform the next two steps in case you have not already installed Windows Admin Center on **SEA-ADM1**.
+   >**Note**: Perform the next two steps to install Windows Admin Center on **SEA-ADM1**.
 
 1. In the **Windows PowerShell** console, enter the following command and then press Enter to download the latest version of Windows Admin Center:
 	
@@ -102,11 +102,11 @@ This lab should take approximately **90** minutes to complete.
 
 1. On **SEA-ADM1**, start Microsoft Edge, and then go to `https://SEA-ADM1.contoso.com`.
 
-   >**Note**: If the link does not work, on **SEA-ADM1**, open File Explorer, select Downloads folder, in the Downloads folder select **WindowsAdminCenter.msi** file and install manually. After the install completes, refresh Microsoft Edge.
+   >**Note**: If the link does not work, on **SEA-ADM1**, run **WindowsAdminCenter.exe** again. After the installation completes, refresh Microsoft Edge.
 
    >**Note**: If you get **NET::ERR_CERT_DATE_INVALID** error, select **Advanced** on the Edge browser page, at the bottom of page select **Continue to sea-adm1-contoso.com (unsafe)**.
 
-1. If prompted, in the **Windows Security** dialog box, enter the credentials provided by the instructor., and then select **OK**.
+1. If prompted, in the **Windows Security** dialog box, enter the credentials provided by the instructor, and then select **OK**.
 1. Review all tabs on the **Configure your Windows Admin Center Settings and environment** pop-up window, including the **Extensions** tab and select **Complete** to close the window.
 1. On the All connections pane, select **+ Add**.
 1. On the Add or create resources pane, on the **Servers** tile, select **Add**.
@@ -117,7 +117,7 @@ This lab should take approximately **90** minutes to complete.
 1. In the **Windows PowerShell** console, enter the following command and then press Enter to trigger deduplication:
 
    ```powershell
-   Start-DedupJob -Volume M: -Type Optimization –Memory 50
+   Start-DedupJob -Volume M: -Type Optimization -Memory 50
    ```
 1.  Switch back to the console session to **SEA-SVR3**.
 1. On **SEA-SVR3**, at the **Windows PowerShell** prompt, enter the following command and press Enter to identify the available space on the volume being deduplicated:
@@ -133,9 +133,9 @@ This lab should take approximately **90** minutes to complete.
 1. On **SEA-ADM1**, in the **Windows PowerShell** console within the **Microsoft Edge** window displaying Windows Admin Center connection to **sea-svr3.contoso.com**, enter the following commands and press Enter after each to determine the status of the deduplication job:
 
    ```powershell
-   Get-DedupStatus –Volume M: | fl
-   Get-DedupVolume –Volume M: |fl
-   Get-DedupMetadata –Volume M: |fl
+   Get-DedupStatus -Volume M: | fl
+   Get-DedupVolume -Volume M: |fl
+   Get-DedupMetadata -Volume M: |fl
    ```
 1. On **SEA-ADM1**, switch to the Disks pane in **Server Manager**, and then, in the **TASKS** menu in the upper right corner, select **Refresh**.
 1. Select the **M:** volume in the **VOLUMES** section, display its context sensitive menu, and select **Properties** from the menu. 
@@ -154,7 +154,7 @@ This lab should take approximately **90** minutes to complete.
 1. Enter the following command and press Enter to install iSCSI target on **SEA-SVR3**:
 
    ```powershell
-   Install-WindowsFeature –Name FS-iSCSITarget-Server –IncludeManagementTools
+   Install-WindowsFeature -Name FS-iSCSITarget-Server -IncludeManagementTools
    ```
 1. Enter the following commands and after each, press Enter to create a new volume formatted with ReFS on disk 2:
 
@@ -369,7 +369,7 @@ This lab should take approximately **90** minutes to complete.
 1. Select each of the four disks in sequence, and then display its context-sensitive menu. In the menu, select the **Bring Online** option, and then in the **Bring Disk Online** window, select **Yes**.
 1. Use the same method to bring online all disks of **SEA-SVR1** and **SEA-SVR2**.
 1. On **SEA-ADM1**, select **Start**, and in the **Start** menu, select **Windows PowerShell ISE**.
-1. In **Windows PowerShell ISE**, select the **File** menu. In the **File** menu, select **Open**, and then, in the **Open** dialog box, go to **C:\Labfiles\Lab09**.
+1. In **Windows PowerShell ISE**, select the **File** menu. In the **File** menu, select **Open**, and then, in the **Open** dialog box, go to **C:\Labfiles\Lab06**.
 1. Select **Implement-StorageSpacesDirect.ps1**, and then select **Open**.
 
    > **Note**: The script is divided into numbered steps. There are eight steps, and each step has a number of commands. To execute an individual line, you can place the cursor anywhere within that line and press F8 or select the **Run Selection** in the toolbar of the **Windows PowerShell ISE** window. To execute multiple lines, select all of them in their entirety, and then use either F8 or the **Run Selection** toolbar icon. The sequence of steps is described in the instructions of this exercise. Ensure that each step completes before starting the next one.

@@ -5,7 +5,7 @@ lab:
   duration: 45 minutes
   level: 300
   islab: true
-  status: 'in-development'
+   status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - Windows Server
@@ -27,12 +27,12 @@ This lab should take approximately **45** minutes to complete.
 1. To install the AD DS server role, at the Windows PowerShell command prompt, enter the following command, and then press Enter:
 	
    ```powershell
-   Install-WindowsFeature –Name AD-Domain-Services –ComputerName SEA-SVR1
+   Install-WindowsFeature -Name AD-Domain-Services -ComputerName SEA-SVR1
    ```
 1. To verify that the AD DS role is installed on **SEA-SVR1**, enter the following command, and then press Enter:
 	
    ```powershell
-   Get-WindowsFeature –ComputerName SEA-SVR1
+   Get-WindowsFeature -ComputerName SEA-SVR1
    ```
 1. In the output of the previous command, search for the **Active Directory Domain Services** checkbox, and then verify that it is selected. Then, search for **Remote Server Administration Tools**. Notice the **Role Administration Tools** node below it, and then verify that the **AD DS and AD LDS Tools** node is also selected.
 
@@ -46,7 +46,7 @@ This lab should take approximately **45** minutes to complete.
 1. On the **Manage** menu, select **Add Servers**.
 1. In the **Add Servers** dialog box, maintain the default settings, and then select **Find Now**.
 1. In the **Active Directory** list of servers, select **SEA-SVR1**, select the arrow to add it to the **Selected** list, and then select **OK**.
-1. On **SEA-ADM1**, ensure that the installation of the AD DS role on **SEA-SRV1** is complete and that the server was added to **Server Manager**. Then select the **Notifications** flag symbol.
+1. On **SEA-ADM1**, ensure that the installation of the AD DS role on **SEA-SVR1** is complete and that the server was added to **Server Manager**. Then select the **Notifications** flag symbol.
 1. Note the post-deployment configuration of **SEA-SVR1**, and then select the **Promote this server to a domain controller** link.
 1. In the **Active Directory Domain Services Configuration Wizard**, on the **Deployment Configuration** page, under **Select the deployment operation**, verify that **Add a domain controller to an existing domain** is selected.
 1. Ensure that the `Contoso.com` domain is specified, and then in the **Supply the credentials to perform this operation** section, select **Change**.
@@ -71,12 +71,12 @@ This lab should take approximately **45** minutes to complete.
 1. At the Windows PowerShell command prompt, enter the following command:
 
    ```powershell
-   Invoke-Command –ComputerName SEA-SVR1 { }
+   Invoke-Command -ComputerName SEA-SVR1 { }
    ```
 1. Place the cursor between the braces (**{ }**), and then paste the content of the copied script line from the clipboard. The complete command should have the following format:
 	
    ```powershell
-   Invoke-Command –ComputerName SEA-SVR1 {Install-ADDSDomainController -NoGlobalCatalog:$false -CreateDnsDelegation:$false -Credential (Get-Credential) -CriticalReplicationOnly:$false -DatabasePath "C:\Windows\NTDS" -DomainName "Contoso.com" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SiteName "Default-First-Site-Name" -SysvolPath "C:\Windows\SYSVOL" -Force:$true}
+   Invoke-Command -ComputerName SEA-SVR1 {Install-ADDSDomainController -NoGlobalCatalog:$false -CreateDnsDelegation:$false -Credential (Get-Credential) -CriticalReplicationOnly:$false -DatabasePath "C:\Windows\NTDS" -DomainName "Contoso.com" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SiteName "Default-First-Site-Name" -SysvolPath "C:\Windows\SYSVOL" -Force:$true}
    ```
 1. To invoke the command, press Enter.
 1. In the **Windows PowerShell Credential Request** dialog box, enter the credentials provided by the instructor.
