@@ -5,7 +5,7 @@ lab:
   duration: 90 minutes
   level: 400
   islab: true
-   status: 'live'
+  status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - Storage Spaces Direct
