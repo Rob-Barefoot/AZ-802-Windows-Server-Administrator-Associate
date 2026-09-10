@@ -5,7 +5,7 @@ lab:
   duration: 45 minutes
   level: 200
   islab: true
-   status: 'live'
+  status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - Windows Admin Center
