@@ -5,7 +5,7 @@ lab:
   duration: 40 minutes
   level: 300
   islab: true
-   status: 'live'
+  status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - Windows Server
