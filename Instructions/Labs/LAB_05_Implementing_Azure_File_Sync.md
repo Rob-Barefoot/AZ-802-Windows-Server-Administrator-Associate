@@ -5,7 +5,7 @@ lab:
   duration: 60 minutes
   level: 400
   islab: true
-   status: 'live'
+  status: 'live'
   targetDate: 2026-08-28
   primarytopics:
     - Azure File Sync
