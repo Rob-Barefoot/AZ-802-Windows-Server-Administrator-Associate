@@ -16,13 +16,13 @@ switch ($hostname) {
             throw 'Failed to install the Lab 8 RSAT tools.'
         }
 
-        Write-Output "[SEA-SVR2] Creating C:\Labfiles\Lab08 directory..."
-        New-Item -Path 'C:\Labfiles\Lab08' -ItemType Directory -Force | Out-Null
+        Write-Output "[SEA-SVR2] Creating C:\Allfiles\AZ802-Lab08 directory..."
+        New-Item -Path 'C:\Allfiles\AZ802-Lab08' -ItemType Directory -Force | Out-Null
 
         # Download CPUSTRES64.EXE from SysInternals
         Write-Output "[SEA-SVR2] Downloading CPUSTRES64.EXE from SysInternals..."
         $cpuStressUrl = 'https://live.sysinternals.com/CPUSTRES64.EXE'
-        $cpuStressPath = 'C:\Labfiles\Lab08\CPUSTRES64.EXE'
+        $cpuStressPath = 'C:\Allfiles\AZ802-Lab08\CPUSTRES64.EXE'
         Invoke-WebRequest -Uri $cpuStressUrl -OutFile $cpuStressPath -UseBasicParsing
         if ((Get-AuthenticodeSignature -LiteralPath $cpuStressPath).Status -ne 'Valid') {
             throw 'CPUSTRES64.EXE does not have a valid Authenticode signature.'

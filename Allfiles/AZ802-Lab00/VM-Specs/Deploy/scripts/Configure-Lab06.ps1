@@ -15,12 +15,11 @@ switch ($hostname) {
         Write-Output "[SEA-ADM1] Installing RSAT tools..."
         Install-WindowsFeature -Name RSAT-AD-Tools, RSAT-File-Services
 
-        Write-Output "[SEA-ADM1] Creating C:\Labfiles directory and sharing it..."
-        New-Item -Path 'C:\Labfiles' -ItemType Directory -Force | Out-Null
-        New-Item -Path 'C:\Labfiles\Lab06' -ItemType Directory -Force | Out-Null
+        Write-Output "[SEA-ADM1] Creating C:\Allfiles\AZ802-Lab06 directory and sharing it..."
+        New-Item -Path 'C:\Allfiles\AZ802-Lab06' -ItemType Directory -Force | Out-Null
 
-        # Share C:\Labfiles for access from other VMs
-        New-SmbShare -Name 'Labfiles' -Path 'C:\Labfiles' -FullAccess 'Everyone' -ErrorAction SilentlyContinue
+        # Share the Lab 6 files for access from other VMs
+        New-SmbShare -Name 'AZ802-Lab06' -Path 'C:\Allfiles\AZ802-Lab06' -FullAccess 'Everyone' -ErrorAction SilentlyContinue
 
         # Create CreateLabFiles.cmd — generates sample files for dedup testing
         Write-Output "[SEA-ADM1] Creating CreateLabFiles.cmd..."
@@ -53,7 +52,7 @@ switch ($hostname) {
     fsutil file createnew M:\data\song3.mp3 2543210987
     fsutil file createnew M:\data\song4.mp3 2543210987
 '@
-        $createFilesCmd | Out-File -FilePath 'C:\Labfiles\Lab06\CreateLabFiles.cmd' -Encoding ASCII
+        $createFilesCmd | Out-File -FilePath 'C:\Allfiles\AZ802-Lab06\CreateLabFiles.cmd' -Encoding ASCII
 
         Write-Output "[SEA-ADM1] Enabling PS Remoting trust..."
         Set-Item WSMan:\localhost\client\trustedhosts -Value '*.contoso.com' -Force

@@ -14,9 +14,9 @@ switch ($hostname) {
         Install-WindowsFeature -Name RSAT-AD-Tools
 
         $requiredFiles = @(
-            'C:\Labfiles\Lab05\DeployDFS.ps1'
-            'C:\Labfiles\Lab05\Install-FileSyncServerCore.ps1'
-            'C:\Labfiles\Lab05\File1.txt'
+            'C:\Allfiles\AZ802-Lab05\DeployDFS.ps1'
+            'C:\Allfiles\AZ802-Lab05\Install-FileSyncServerCore.ps1'
+            'C:\Allfiles\AZ802-Lab05\File1.txt'
         )
         foreach ($requiredFile in $requiredFiles) {
             if (-not (Test-Path -LiteralPath $requiredFile -PathType Leaf)) {

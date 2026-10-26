@@ -419,7 +419,7 @@ if ($LabNumber -eq 5) {
     $lab05FileNames = @('DeployDFS.ps1', 'Install-FileSyncServerCore.ps1', 'File1.txt')
     $remoteCommands = [Collections.Generic.List[string]]::new()
     $remoteCommands.Add("`$ErrorActionPreference = 'Stop'")
-    $remoteCommands.Add("New-Item -Path 'C:\Labfiles\Lab05' -ItemType Directory -Force | Out-Null")
+    $remoteCommands.Add("New-Item -Path 'C:\Allfiles\AZ802-Lab05' -ItemType Directory -Force | Out-Null")
 
     foreach ($fileName in $lab05FileNames) {
         $sourcePath = Join-Path $lab05SourceDirectory $fileName
@@ -429,7 +429,7 @@ if ($LabNumber -eq 5) {
 
         $encodedContent = [Convert]::ToBase64String([IO.File]::ReadAllBytes($sourcePath))
         $expectedHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash
-        $destinationPath = "C:\Labfiles\Lab05\$fileName"
+        $destinationPath = "C:\Allfiles\AZ802-Lab05\$fileName"
         $remoteCommands.Add("[IO.File]::WriteAllBytes('$destinationPath', [Convert]::FromBase64String('$encodedContent'))")
         $remoteCommands.Add("if ((Get-FileHash -LiteralPath '$destinationPath' -Algorithm SHA256).Hash -ne '$expectedHash') { throw 'Hash verification failed for $destinationPath.' }")
     }
@@ -456,7 +456,8 @@ if ($LabNumber -eq 6) {
         [Security.Cryptography.SHA256]::Create().ComputeHash($lab06Bytes)
     ).Replace('-', '')
     $lab06RemoteScript = @"
-`$destinationPath = 'C:\Labfiles\Lab06\$lab06FileName'
+`$destinationPath = 'C:\Allfiles\AZ802-Lab06\$lab06FileName'
+    New-Item -Path (Split-Path -Parent `$destinationPath) -ItemType Directory -Force | Out-Null
 [IO.File]::WriteAllBytes(`$destinationPath, [Convert]::FromBase64String('$encodedContent'))
 if ((Get-FileHash -LiteralPath `$destinationPath -Algorithm SHA256).Hash -ne '$expectedHash') {
     throw 'Hash verification failed for `$destinationPath.'
